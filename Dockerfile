@@ -31,9 +31,6 @@ COPY container_scripts/* /scriptdir/
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN update-rc.d postgresql enable
-RUN service postgresql start
-
 RUN apt-get install -y nano
 
 # Expose port 3000 to the Docker host, so we can access it 
