@@ -14,3 +14,4 @@ rm -rf public
 rm -rf test
 rm -rf tmp
 rm -rf vendor
+rm -rf spec
