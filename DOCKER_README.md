@@ -11,6 +11,19 @@
     `./host_scripts/get_project.sh`    
     
 ## Work
+
+### One Time
+
+Fix the database.yml to point to the postgres docker container
+
+```
+default: &default
+
+  ...
+  
+  host: db
+  username: postgres
+```
     
 ### Run Tests
     
