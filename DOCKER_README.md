@@ -1,6 +1,11 @@
 # How to use the Docker infrastructure
 
+This describes how to use this repo's docker infrastructure to initialize a new Rails project and 
+then proceed with development workflow.
+
 ## Initialize
+
+1. Fork this repository to a new repo representing your Rails app.
 
 1. Create image with rails shell project:
  
@@ -8,22 +13,13 @@
 
 1. Fetch the rails shell project contents:
 
-    `./host_scripts/get_project.sh`    
+    `./host_scripts/get_project.sh`
+        
+1. Run tests
+        
+    `./host_scripts/docker_test.sh`
     
 ## Work
-
-### One Time
-
-Fix the database.yml to point to the postgres docker container
-
-```
-default: &default
-
-  ...
-  
-  host: db
-  username: postgres
-```
     
 ### Run Tests
     
