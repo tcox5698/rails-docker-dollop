@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose run rails_app bash
+docker-compose run --service-ports rails_app bash

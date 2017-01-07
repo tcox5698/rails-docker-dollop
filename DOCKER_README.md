@@ -28,3 +28,24 @@ then proceed with development workflow.
 ### Run a simple bash command in container
     
     `./host_scripts/docker_run.sh <arg>`
+    
+### Start Rails manually
+    
+1. Access bash command line on rails app instance
+
+    `./host_scripts/docker_bash.sh`
+
+1. Start rails server and bind to ip correctly
+
+    `rails s -b 0.0.0.0`
+    
+### Manually Access the Web App
+    
+Find out your docker machine ip address. On Mac OSX use Docker Quickstart Terminal for this. 
+You should see:
+
+    docker is configured to use the default machine with IP 192.168.99.100
+    
+Point your browser at `http://<ip>:3000`
+
+For example: http://192.168.99.100:3000
