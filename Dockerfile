@@ -37,4 +37,4 @@ RUN apt-get install -y nano
 # from the outside.
 EXPOSE 3000
 
-CMD [ "bash" ]
+CMD [ "irb" ]
