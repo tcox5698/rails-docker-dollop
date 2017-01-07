@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run -itP -v $(pwd):/app tcrails "/scriptdir/copy_project.sh"
+docker-compose run rails_app "/container_scripts/copy_project.sh"

@@ -25,9 +25,6 @@ RUN echo "gem 'rspec-rails'" >> Gemfile
 RUN bundle install
 RUN rails g rspec:install
 
-RUN mkdir /scriptdir
-COPY container_scripts/* /scriptdir/
-
 RUN mkdir -p /app
 WORKDIR /app
 

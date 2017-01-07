@@ -6,6 +6,7 @@ services:
      - "3000:3000"
     volumes:
      - .:/app
+     - ./container_scripts:/container_scripts
     depends_on:
      - db
     links:

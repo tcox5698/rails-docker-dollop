@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run -itP -v $(pwd):/app tcrails "/scriptdir/rails_test.sh"
+docker-compose run rails_app "/container_scripts/rails_test.sh"
