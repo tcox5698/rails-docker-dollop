@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install -y \
   postgresql \
   postgresql-contrib \
-  nano
+  nano \
+  less
 
 RUN gem install rails
 
@@ -32,7 +33,5 @@ WORKDIR /app
 # Expose port 3000 to the Docker host, so we can access it
 # from the outside.
 EXPOSE 3000
-
-RUN bundle install && bundle exec spring binstub --all
 
 CMD [ "irb" ]
