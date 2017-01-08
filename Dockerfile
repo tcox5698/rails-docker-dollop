@@ -10,28 +10,29 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install -y \
   postgresql \
-  postgresql-contrib
+  postgresql-contrib \
+  nano
 
 RUN gem install rails
 
 RUN mkdir -p /localdev
 WORKDIR /localdev
 
-RUN rails new project_shell  --database=postgresql --skip-test-unit
+RUN rails new project_shell  --database=postgresql --skip-test
 
 WORKDIR /localdev/project_shell
 
 RUN echo "gem 'rspec-rails'" >> Gemfile
-RUN bundle install
+RUN bundle install && bundle exec spring binstub --all
 RUN rails g rspec:install
 
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN apt-get install -y nano
-
-# Expose port 3000 to the Docker host, so we can access it 
+# Expose port 3000 to the Docker host, so we can access it
 # from the outside.
 EXPOSE 3000
+
+RUN bundle install && bundle exec spring binstub --all
 
 CMD [ "irb" ]
