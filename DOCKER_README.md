@@ -28,16 +28,30 @@ then proceed with development workflow.
 ### Run a simple bash command in container
     
     `./host_scripts/docker_run.sh <arg>`
-    
+     
 ### Start Rails manually
     
 1. Access bash command line on rails app instance
 
     `./host_scripts/docker_bash.sh`
+    
+1. Bundle install
+    
+    `bundle install` 
 
 1. Start rails server and bind to ip correctly
 
     `rails s -b 0.0.0.0`
+    
+### Testing
+    
+rspec should just work
+    
+Cucumber has to be initialized in the context of rails
+    
+    `rails generate cucumber:install`
+        
+But the Dockerfile should have set up the PhantomJS headless browser simulator.        
     
 ### Manually Access the Web App
     
