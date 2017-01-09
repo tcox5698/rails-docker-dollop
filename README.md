@@ -1,24 +1,69 @@
-# README
+# How to use the Docker infrastructure
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This describes how to use this repo's docker infrastructure to initialize a new Rails project and 
+then proceed with development workflow.
 
-Things you may want to cover:
+## Initialize
 
-* Ruby version
+1. Fork this repository to a new repo representing your Rails app.
 
-* System dependencies
+1. Create image with rails shell project:
+ 
+    `./host_scripts/docker_build.sh`
 
-* Configuration
+1. Fetch the rails shell project contents:
 
-* Database creation
+    `./host_scripts/get_project.sh`
+    
+1. Initialize cucumber:
+    
+    `rails generate cucumber:install`
+    
+1. Configure headless cucumber and capybara
+    
+    Add this to features/support/env.rb (Dockerfile should have set up the PhantomJS headless browser simulator.):
+    
+    `Capybara.default_driver = :poltergeist`
+    
+    Change the database cleaner strategy:
+    
+    `DatabaseCleaner.strategy = :truncation`
+        
+1. Run tests
+        
+    `./host_scripts/docker_test.sh`
+    
+## Work
+    
+### Run Tests
+    
+    `./host_scripts/docker_test.sh`
+    
+### Run a simple bash command in container
+    
+    `./host_scripts/docker_run.sh <arg>`
+     
+### Start Rails manually
+    
+1. Access bash command line on rails app instance
 
-* Database initialization
+    `./host_scripts/docker_bash.sh`
+    
+1. Bundle install
+    
+    `bundle install` 
 
-* How to run the test suite
+1. Start rails server and bind to ip correctly
 
-* Services (job queues, cache servers, search engines, etc.)
+    `rails s -b 0.0.0.0`
+             
+### Manually Access the Web App
+    
+Find out your docker machine ip address. On Mac OSX use Docker Quickstart Terminal for this. 
+You should see:
 
-* Deployment instructions
+    docker is configured to use the default machine with IP 192.168.99.100
+    
+Point your browser at `http://<ip>:3000`
 
-* ...
+For example: http://192.168.99.100:3000
